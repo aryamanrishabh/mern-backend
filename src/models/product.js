@@ -11,6 +11,9 @@ const productSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    color: {
+      type: String,
+    },
     price: {
       type: Number,
       required: true,
@@ -20,6 +23,12 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
+    stock: [
+      {
+        size: { type: String },
+        inStock: { type: Boolean },
+      }
+    ],
     offer: { type: Number },
     productPictures: [{ img: { type: String } }],
     reviews: [
@@ -28,9 +37,7 @@ const productSchema = new mongoose.Schema(
         review: String,
       },
     ],
-    productSizes: [{ size: { type: String } }],
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
-    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     updatedAt: Date,
   },
   { timestamps: true }
