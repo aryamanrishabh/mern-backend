@@ -16,7 +16,6 @@ exports.signup = (req, res) => {
       lastName,
       email,
       password,
-      username: Math.random().toString(),
     });
 
     _user.save((error, data) => {

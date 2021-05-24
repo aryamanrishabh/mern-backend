@@ -11,6 +11,19 @@ const productSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    type: {
+      type: String,
+    },
+    fabric: [
+      {
+        type: String,
+      },
+    ],
+    sizes: [
+      {
+        type: String,
+      },
+    ],
     color: {
       type: String,
     },
@@ -23,21 +36,13 @@ const productSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    stock: [
-      {
-        size: { type: String },
-        inStock: { type: Boolean },
-      }
-    ],
     offer: { type: Number },
     productPictures: [{ img: { type: String } }],
-    reviews: [
-      {
-        userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-        review: String,
-      },
-    ],
-    category: { type: mongoose.Schema.Types.ObjectId, ref: "Category" },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Category",
+      required: true,
+    },
     updatedAt: Date,
   },
   { timestamps: true }

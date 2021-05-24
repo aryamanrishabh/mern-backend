@@ -5,11 +5,7 @@ const slugify = require("slugify");
 exports.createProduct = (req, res) => {
   //res.status(200).json({ file: req.files, body: req.body });
 
-  const { name, price, description, category, color } = req.body;
-  /* let stock = [];
-  const size = req.body.stock.size;
-  const inStock = req.body.stock.inStock;
-  stock.push(stockObj); */
+  const { name, price, description, category, color, type, fabric, sizes } = req.body;
   let productPictures = [];
 
   if (req.files.length > 0) {
@@ -26,6 +22,9 @@ exports.createProduct = (req, res) => {
     productPictures,
     category,
     color,
+    type,
+    fabric, 
+    sizes
   });
 
   product.save((error, product) => {

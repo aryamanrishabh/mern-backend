@@ -18,14 +18,6 @@ const userSchema = new mongoose.Schema(
       min: 3,
       max: 20,
     },
-    username: {
-      type: String,
-      required: true,
-      trim: true,
-      unique: true,
-      index: true,
-      lowercase: true,
-    },
     email: {
       type: String,
       unique: true,
@@ -54,7 +46,7 @@ userSchema.virtual("password").set(function (password) {
   this.hash_password = bcrypt.hashSync(password, 10);
 });
 
-userSchema.virtual("fullName").get(function(){
+userSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
