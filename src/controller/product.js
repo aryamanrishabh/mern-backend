@@ -6,10 +6,10 @@ exports.createProduct = (req, res) => {
   //res.status(200).json({ file: req.files, body: req.body });
 
   const { name, price, description, category, color } = req.body;
-  /*let stock = req.body.stock;
-  const size = stock[0];
-  const inStock = stock[1];
-  stock = [{size, inStock}];*/
+  /* let stock = [];
+  const size = req.body.stock.size;
+  const inStock = req.body.stock.inStock;
+  stock.push(stockObj); */
   let productPictures = [];
 
   if (req.files.length > 0) {
@@ -26,7 +26,6 @@ exports.createProduct = (req, res) => {
     productPictures,
     category,
     color,
-    stock,
   });
 
   product.save((error, product) => {
